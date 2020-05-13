@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<title>Waste Classifier</title>
+<h1>Upload the image of the waste you want to classify</h1>
+<form method="POST" enctype="multipart/form-data">
+     {{ form.hidden_tag() }}
+     {{ form.photo }}
+     {{loading}}
+     {% for error in form.photo.errors %}
+         <span style="color: red;">{{ error }}</span>
+     {% endfor %}
+     <h3>Choose file and press the upload button and hold on a few seconds{{result}}</h3>
+     {{ form.submit }}
+</form>
+
+{% if file_url %}
+<br>
+<img src="{{ file_url }}">
+{% endif %}
